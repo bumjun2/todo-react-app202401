@@ -3,12 +3,14 @@ import TodoItem from "./TodoItem";
 
 import './scss/TodoMain.scss'
 
-const TodoMain = ({todoList, removeTodo}) => {
+const TodoMain = ({todoList, removeTodo, checkTodo}) => {
 
     return (
         <ul className='todo-list'>
             {
-                todoList.map(todo => <TodoItem key ={todo.id} item ={todo} removeTodo={removeTodo}/>)
+                todoList.map(todo => <TodoItem key ={todo.id} item ={todo}
+                                               removeTodo={removeTodo}
+                                               checkTodo={checkTodo}/>)
             }
         </ul>
     );

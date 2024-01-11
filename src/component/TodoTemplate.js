@@ -53,10 +53,27 @@ const TodoTemplate = () => {
         setTodoList(todoList.filter(todo => todo.id != id));
     }
 
+    const checkTodo = id => {
+        const copyTodoList = [...todoList];
+
+        const foundTodo = copyTodoList.find(todo => todo.id === id);
+
+        foundTodo.done = !foundTodo.done;
+
+        setTodoList(copyTodoList)
+    }
+
+    const a = todoList.filter(todo => !todo.done);
+
+
+
+
     return (
         <div>
-            <TodoHeader todoListLingth={todoList.length}/>
-            <TodoMain todoList={todoList} removeTodo={removeTodo}/>
+            <TodoHeader todoListLingth={a.length}/>
+            <TodoMain todoList={todoList}
+                      removeTodo={removeTodo}
+                      checkTodo={checkTodo}/>
             <TodoInput addTodo={addTodo}/>
         </div>
     );
