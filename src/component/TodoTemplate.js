@@ -7,25 +7,54 @@ import './scss/TodoTemplate.scss'
 
 
 const TodoTemplate = () => {
-    const [text, setText] = useState(
-        {
-            id : 0,
-            title : '',
-            done : false,
-        }
-    );
+    /*
+        리액트는 부목컴포넌트에서 자식 컴포넌트로의 데이터 이동이 반대보다 쉽기 때문에
+        할 일 데이터는 상위 부모컴퍼넌트에서 처리하는 것이 좋다
+     */
 
-    const inputChangeHandler = e => {
-        setText({
-            title : e.target.value
-        })
+    const [todoList, setTodoList] = useState([
+        {
+            id : 1,
+            title : '장보기',
+            done : false
+        },
+        {
+            id : 2,
+            title : '저녁먹기',
+            done : true
+        },
+        {
+            id : 3,
+            title : '수다떨기',
+            done : false
+        },
+    ]);
+
+
+    const addTodo = (text) => {
+        console.log('할 일 등록 함수를 todotemplate에서 실행');
+
+        const makeNewId = () => {
+          if (todoList.length === 0) return  1;
+          return todoList[todoList.length - 1].id + 1;
+        };
+
+        setTodoList([...todoList, {
+            id: makeNewId(),
+            title: text,
+            done: false
+        }]);
+
+
+        console.log(todoList)
     }
+
 
     return (
         <div>
-            <TodoHeader />
-            <TodoMain text={text}/>
-            <TodoInput inputChangeHandler={inputChangeHandler}/>
+            <TodoHeader todoListLingth={todoList.length}/>
+            <TodoMain todoList={todoList} />
+            <TodoInput addTodo={addTodo}/>
         </div>
     );
 };
