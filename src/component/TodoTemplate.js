@@ -49,11 +49,14 @@ const TodoTemplate = () => {
         console.log(todoList)
     }
 
+    const removeTodo = (id) => {
+        setTodoList(todoList.filter(todo => todo.id != id));
+    }
 
     return (
         <div>
             <TodoHeader todoListLingth={todoList.length}/>
-            <TodoMain todoList={todoList} />
+            <TodoMain todoList={todoList} removeTodo={removeTodo}/>
             <TodoInput addTodo={addTodo}/>
         </div>
     );
