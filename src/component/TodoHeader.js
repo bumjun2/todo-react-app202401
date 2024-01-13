@@ -17,7 +17,7 @@ const TodoHeader = ({todoListLingth}) => {
         <header>
             <h1>{dateString}</h1>
             <div className='day'>{dayName}</div>
-            <div className='tasks-left'>할 일 {todoListLingth}개 남음</div>
+            <div className='tasks-left'>할 일 {todoListLingth}개 남음 바보</div>
         </header>
     );
 };
