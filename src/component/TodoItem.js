@@ -13,7 +13,7 @@ function TodoItem({item, removeTodo, checkTodo}) {
     }
 
     const checkHandler = e => {
-        checkTodo(id)
+        checkTodo(id, done)
     }
 
 
